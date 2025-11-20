@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>YCOFWTDYG</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body class="theme-light">
-    <nav class="nav">
-      <div class="brand">#YCOFWTDYG</div>
-      <div class="nav-links">
-        <a class="home-link active" href="#home">Home</a>
-        <a class="coming-soon" href="#" aria-disabled="true">Store (Coming Soon)</a>
-        <a class="coming-soon" href="#" aria-disabled="true">Stories (Coming Soon)</a>
-      </div>
-      <button id="theme-toggle" class="toggle" aria-pressed="false" aria-label="Toggle color theme">
-        <span class="icon">Sun</span>
-        <span class="label">Light</span>
-      </button>
+</head>
+<body data-theme="light">
+    <nav>
+        <div class="logo">YCOFWTDYG</div>
+        <ul class="nav-links">
+            <li><a href="#home" id="home-link">Home</a></li>
+            <li><a href="#store" class="disabled">Store (Coming Soon)</a></li>
+            <li><a href="#stories" class="disabled">Stories (Coming Soon)</a></li>
+            <li>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </li>
+        </ul>
     </nav>
 
-    <main>
-      <section class="hero" id="home">
-        <div class="hero-copy">
-          <p class="eyebrow">Flagship drop</p>
-          <h1>Sleek, modern, and tuned to your theme colors.</h1>
-          <p class="hint">
-            The canvas on the right scales with the window, capped at a 1280 × 720 frame, and inherits the active
-            light or dark palette—no external image needed.
-          </p>
+    <main id="main-content">
+        <div class="image-container">
+            <img src="hero.jpg" alt="Hero Image" class="hero-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="placeholder" style="display: none;">YCOFWTDYG</div>
         </div>
-        <div class="hero-frame">
-          <div class="hero-visual" aria-hidden="true"></div>
-        </div>
-      </section>
     </main>
 
-    <script src="script.js"></script>
-  </body>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        const homeLink = document.getElementById('home-link');
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        const navLinks = document.querySelectorAll('.nav-links a:not(.disabled)');
+        
+        function updateActiveLink() {
+            const hash = window.location.hash || '#home';
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === hash) {
+                    link.classList.add('active');
+                }
+            });
+
+            if (hash === '#home' || hash === '') {
+                homeLink.classList.add('hidden');
+            } else {
+                homeLink.classList.remove('hidden');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                window.location.hash = href;
+                updateActiveLink();
+            });
+        });
+
+        window.addEventListener('hashchange', updateActiveLink);
+        updateActiveLink();
+    </script>
+</body>
 </html>
