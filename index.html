@@ -4,33 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gradient Landing</title>
+    <title>YCOFWTDYG</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="theme-light">
     <nav class="nav">
-      <div class="brand">Aurora</div>
+      <div class="brand">#YCOFWTDYG</div>
       <div class="nav-links">
-        <a class="active" href="#">Overview</a>
-        <a href="#">Layouts</a>
-        <a href="#">Themes</a>
-        <span class="pill disabled">API Soon</span>
+        <a class="home-link active" href="#home">Home</a>
+        <a class="coming-soon" href="#" aria-disabled="true">Store (Coming Soon)</a>
+        <a class="coming-soon" href="#" aria-disabled="true">Stories (Coming Soon)</a>
       </div>
       <button id="theme-toggle" class="toggle" aria-pressed="false" aria-label="Toggle color theme">
-        <span class="icon">☀</span>
+        <span class="icon">Sun</span>
         <span class="label">Light</span>
       </button>
     </nav>
 
-    <main class="hero">
-      <div class="hero-tagline">
-        <p class="eyebrow">Launch ready</p>
-        <h1>Ship vivid, glassy landing pages in minutes.</h1>
-        <p class="hint">
-          Drop in this layout, swap <code>background-image</code> for your own hero shot, and flip the theme
-          to match your brand palette.
-        </p>
-      </div>
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Flagship drop</p>
+          <h1>Sleek, modern, and made to showcase your hero shot.</h1>
+          <p class="hint">
+            The image below scales fluidly with the window but never exceeds its native
+            1280 x 720 resolution, so it stays crisp on every screen.
+          </p>
+        </div>
+        <div class="hero-frame">
+          <img class="hero-image" src="hero.jpg" alt="Showcase hero" width="1280" height="720">
+        </div>
+      </section>
     </main>
 
     <script src="script.js"></script>
