@@ -4,12 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Gradient Landing</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
-    <script src="index.js"></script>
-    <header>THIS IS A TEST</header>
-  </body>
+  <body class="theme-light">
+    <nav class="nav">
+      <div class="brand">Aurora</div>
+      <div class="nav-links">
+        <a class="active" href="#">Overview</a>
+        <a href="#">Layouts</a>
+        <a href="#">Themes</a>
+        <span class="pill disabled">API Soon</span>
+      </div>
+      <button id="theme-toggle" class="toggle" aria-pressed="false" aria-label="Toggle color theme">
+        <span class="icon">☀</span>
+        <span class="label">Light</span>
+      </button>
+    </nav>
 
+    <main class="hero">
+      <div class="hero-tagline">
+        <p class="eyebrow">Launch ready</p>
+        <h1>Ship vivid, glassy landing pages in minutes.</h1>
+        <p class="hint">
+          Drop in this layout, swap <code>background-image</code> for your own hero shot, and flip the theme
+          to match your brand palette.
+        </p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
