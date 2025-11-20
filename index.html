@@ -6,7 +6,7 @@
     <title>YCOFWTDYG</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="light">
+<body data-theme="dark">
     <nav>
         <div class="logo">YCOFWTDYG</div>
         <ul class="nav-links">
@@ -34,7 +34,7 @@
         const body = document.body;
         const homeLink = document.getElementById('home-link');
 
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         body.setAttribute('data-theme', savedTheme);
         themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
 
